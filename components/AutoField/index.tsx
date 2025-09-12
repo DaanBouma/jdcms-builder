@@ -17,6 +17,7 @@ import {
   SelectField,
   ExternalField,
   ArrayField,
+  ColorField,
   DefaultField,
   TextareaField,
 } from "./fields";
@@ -131,6 +132,7 @@ const defaultFields = {
   radio: RadioField,
   text: DefaultField,
   number: DefaultField,
+  color: ColorField,
 };
 
 function AutoFieldInternal<
@@ -166,6 +168,7 @@ function AutoFieldInternal<
       radio: overrides.fieldTypes?.radio || defaultFields.radio,
       text: overrides.fieldTypes?.text || defaultFields.text,
       number: overrides.fieldTypes?.number || defaultFields.number,
+      color: overrides.fieldTypes?.color || defaultFields.color,
     }),
     [overrides]
   );

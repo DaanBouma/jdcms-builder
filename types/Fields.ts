@@ -35,6 +35,12 @@ export type TextareaField = BaseField & {
   contentEditable?: boolean;
 };
 
+export type ColorField = BaseField & {
+  type: "color";
+  placeholder?: string;
+  contentEditable?: boolean;
+};
+
 export type SelectField = BaseField & {
   type: "select";
   options: FieldOptions;
@@ -141,6 +147,7 @@ export type Field<ValueType = any, UserField extends {} = {}> =
   | NumberField
   | TextareaField
   | SelectField
+  | ColorField
   | RadioField
   | ArrayField<
       ValueType extends { [key: string]: any }[] ? ValueType : never,

@@ -33,10 +33,16 @@ type WithPartialProps<T, Props extends DefaultComponentProps> = Omit<
   props?: Partial<Props>;
 };
 
+// type voor individuele parts
+type ComponentPart<FieldProps extends DefaultComponentProps = any> = {
+  label?: string;
+  fields?: Partial<Fields<FieldProps>>; // optioneel gemaakt met Partial
+};
+
 type ComponentConfigInternal<
   RenderProps extends DefaultComponentProps,
   FieldProps extends DefaultComponentProps,
-  DataShape = Omit<ComponentData<FieldProps>, "type">, // NB this doesn't include AllProps, so types will not contain deep slot types. To fix, we require a breaking change.
+  DataShape = Omit<ComponentData<FieldProps>, "type">,
   UserField extends BaseField = {}
 > = {
   render: PuckComponent<RenderProps>;
@@ -78,6 +84,7 @@ type ComponentConfigInternal<
     }
   ) => Promise<Partial<Permissions>> | Partial<Permissions>;
   metadata?: Metadata;
+  parts?: Record<string, ComponentPart<FieldProps>>; // aangepast voor optionele velden
 };
 
 // DEPRECATED - remove old generics in favour of Params
@@ -92,7 +99,7 @@ export type ComponentConfig<
   }
     ? RenderPropsOrParams["props"]
     : RenderPropsOrParams,
-  DataShape = Omit<ComponentData<FieldProps>, "type"> // NB this doesn't include AllProps, so types will not contain deep slot types. To fix, we require a breaking change.
+  DataShape = Omit<ComponentData<FieldProps>, "type">
 > = RenderPropsOrParams extends ComponentConfigParams<
   infer ParamsRenderProps,
   never
@@ -222,6 +229,7 @@ export type ExtractConfigParams<UserConfig extends ConfigInternal> =
   >
     ? {
         props: PropsOrParams;
+        parts?: Record<string, ComponentPart<any>>;
         rootProps: RootProps & DefaultRootFieldProps;
         categoryNames: CategoryName;
         field: UserField extends { type: string } ? UserField : Field;

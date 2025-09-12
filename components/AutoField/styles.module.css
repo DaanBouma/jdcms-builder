@@ -18,19 +18,23 @@
   padding-inline-start: 4px;
 }
 
+.Input-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .Input-disabledIcon {
   color: var(--puck-color-grey-05);
   margin-inline-start: auto;
 }
 
-.Input-input {
-  background: var(--puck-color-white);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--puck-color-grey-09);
+.Input-textarea {
+  background: var(--CMS-intermediate);
   border-radius: 4px;
   box-sizing: border-box;
   font-family: inherit;
+  color: var(--CMS-quaternary);
   font-size: 16px;
   padding: 12px 15px;
   transition: border-color 50ms ease-in;
@@ -38,56 +42,98 @@
   max-width: 100%;
 }
 
-@media (min-width: 458px) {
-  .Input-input {
-    font-size: 14px;
-  }
+.Input-default {
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: var(--CMS-quaternary);
+  font-size: 16px;
+  padding: 12px 15px;
+  transition: border-color 50ms ease-in;
+  width: 150px;
+  max-width: 100%;
+  text-align: end;
 }
 
-select.Input-input {
-  appearance: none; /* Safari */
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23c3c3c3'><polygon points='0,0 100,0 50,50'/></svg>")
-    no-repeat;
-  background-size: 12px;
-  background-position: calc(100% - 12px) calc(50% + 3px);
-  background-repeat: no-repeat;
-  background-color: var(--puck-color-white);
+.Input-select svg {
+  color: var(--CMS-quaternary);
+}
+
+.Input-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  color: var(--CMS-quaternary);
+  border-radius: 6px;
   cursor: pointer;
+  transition: border 0.2s;
+  font-size: 1rem;
+  outline: none;
 }
 
-select.Input-input:dir(rtl) {
-  background-position: 12px calc(50% + 3px);
+
+.Input-chevronIcon {
+  margin-left: 8px;
+  color: #a1a1aa;
+  transition: transform 0.2s;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .Input:has(> input):hover .Input-input:not([readonly]),
-  .Input:has(> textarea):hover .Input-input:not([readonly]) {
-    border-color: var(--puck-color-grey-05);
-    transition: none;
-  }
-  .Input:has(> select):hover .Input-input:not([disabled]) {
-    background-color: var(--puck-color-azure-12);
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%235a5a5a'><polygon points='0,0 100,0 50,50'/></svg>");
-    border-color: var(--puck-color-grey-05);
-    transition: none;
-  }
+.Input-dropdownOpen .Input-chevronIcon {
+  transform: rotate(180deg);
 }
 
-.Input-input:focus {
-  border-color: var(--puck-color-grey-05);
-  outline: 2px solid var(--puck-color-azure-05);
-  transition: none;
+.Input-placeholder {
+  color: #a1a1aa;
 }
 
-.Input--readOnly > .Input-input,
-.Input--readOnly > select.Input-input {
-  background-color: var(--puck-color-grey-11);
-  border-color: var(--puck-color-grey-09);
-  color: var(--puck-color-grey-04);
-  cursor: default;
-  opacity: 1;
-  outline: 0;
-  transition: none;
+.Input-dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 10;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px 0 #00000014;
+  margin-top: 2px;
+  padding: 4px 0;
+  max-height: 220px;
+  overflow-y: auto;
+  animation: Input-fadeIn 0.15s;
+}
+
+@keyframes Input-fadeIn {
+  from { opacity: 0; transform: translateY(-6px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.Input-dropdownOption {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #18181b;
+  transition: background 0.15s, color 0.15s;
+  border: none;
+  background: none;
+}
+
+.Input-dropdownOption:hover,
+.Input-dropdownOption:focus {
+  background: #f3f4f6;
+  color: var(--CMS-quaternary);
+}
+
+.Input-selected {
+  color: var(--CMS-quaternary);
+  font-weight: 500;
+}
+
+/* Zorg dat de dropdown niet buiten de container valt */
+.Input-input-container {
+  position: relative;
 }
 
 .Input-radioGroupItems {
@@ -175,4 +221,178 @@ select.Input-input:dir(rtl) {
 
 textarea.Input-input {
   margin-bottom: -4px; /* Remove strange bottom border */
+}
+
+.Input-chevronIcon {
+  margin-left: 8px;
+  color: #a1a1aa;
+  transition: transform 0.2s;
+}
+
+.Input-dropdownOpen .Input-chevronIcon {
+  transform: rotate(180deg);
+}
+
+.Input-placeholder {
+  color: #a1a1aa;
+}
+
+.Input-dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 10;
+  background: #fff;
+  border-radius: 6px;
+  margin-top: 2px;
+  padding: 4px 0;
+  max-height: 220px;
+  overflow-y: auto;
+  animation: fadeIn 0.15s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.Input-dropdownOption {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #18181b;
+  transition: background 0.15s, color 0.15s;
+  border: none;
+  background: none;
+}
+
+.Input-dropdownOption:hover,
+.Input-dropdownOption:focus {
+  background: var(--CMS-intermediate);
+  color: var(--CMS-quaternary);
+}
+
+.Input-selected {
+  background: var(--CMS-intermediate);
+  color: var(--CMS-quaternary);
+  font-weight: 500;
+}
+
+.Input-input-container {
+  position: relative;
+}
+
+.Input-color {
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #fff;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.Input-color:disabled {
+  cursor: not-allowed;
+}
+
+.Input-colorTriggerInner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Input-colorPreview {
+  width: 37px;
+  height: 37px;
+  border: 1px solid var(--CMS-tertiary);
+  border-radius: 9999999px;
+  flex-shrink: 0;
+}
+
+.Input-colorPickerDropdown {
+  position: absolute;
+  top: 0;
+  right: calc(100% + 8px);
+  z-index: 1000;
+  background-color: var(--CMS-primary);
+  border: 1px solid var(--CMS-secondary);
+  border-radius: 6px;
+  box-shadow: 0 20px 25px -5px #0000001a, 0 10px 10px -5px #0000000a;
+  min-width: 280px;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.Input-colorPickerSection {
+  margin-bottom: 16px;
+}
+
+.Input-colorPickerLabel {
+  display: block;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.Input-colorPickerRow {
+  display: flex;
+  gap: 12px;
+}
+
+.Input-saturationArea {
+  width: 200px;
+  height: 120px;
+  position: relative;
+  border-radius: 6px;
+  cursor: crosshair;
+}
+
+.Input-saturationIndicator {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+
+.Input-hueSlider {
+  width: 20px;
+  height: 120px;
+  position: relative;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+}
+
+.Input-hueIndicator {
+  position: absolute;
+  left: 50%;
+  width: 24px;
+  height: 4px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+
+.Input-hexInput {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: var(--CMS-intermediate);
+  border: 1px solid var(--CMS-secondary);
+  border-radius: 6px;
+  color: var(--CMS-tertiary);
+  font-size: 14px;
+  outline: none;
 }

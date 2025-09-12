@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {
+import React, {
   Context,
   createContext,
   PropsWithChildren,
@@ -79,9 +79,9 @@ const FieldSideBar = () => {
   );
 
   return (
-    <SidebarSection noPadding noBorderTop showBreadcrumbs title={title}>
+    <>
       <Fields />
-    </SidebarSection>
+    </>
   );
 };
 

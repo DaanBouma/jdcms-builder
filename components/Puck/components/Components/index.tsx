@@ -1,7 +1,7 @@
 import { useComponentList } from "../../../../lib/use-component-list";
 import { useAppStore } from "../../../../store";
 import { ComponentList } from "../../../ComponentList";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 
 export const Components = () => {
   const overrides = useAppStore((s) => s.overrides);

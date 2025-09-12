@@ -2,6 +2,15 @@
   /*
    * Color palette
    */
+  --CMS-primary: #FFFFFF;
+  --CMS-intermediate: #F8F8F8;
+  --CMS-secondary: #E8E8E8;
+  --CMS-tertiary: #767676;
+  --CMS-quaternary: #3E3E3E;
+  --CMS-contrast: #18181B;
+  --CMS-editorbackground: #e0e5ea;
+
+
 
   --puck-color-rose-01: #4a001c;
   --puck-color-rose-02: #670833;

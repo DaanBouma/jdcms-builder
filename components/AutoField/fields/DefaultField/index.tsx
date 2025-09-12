@@ -1,6 +1,7 @@
 import getClassNameFactory from "../../../../lib/get-class-name-factory";
 import styles from "../../styles.module.css";
 import { Hash, Type } from "lucide-react";
+import React from "react";
 import { FieldPropsInternal } from "../..";
 
 const getClassName = getClassNameFactory("Input", styles);
@@ -19,20 +20,12 @@ export const DefaultField = ({
   const value = _value as string | number | undefined | null;
 
   return (
-    <Label
-      label={label || name}
-      icon={
-        labelIcon || (
-          <>
-            {field.type === "text" && <Type size={16} />}
-            {field.type === "number" && <Hash size={16} />}
-          </>
-        )
-      }
-      readOnly={readOnly}
-    >
+    <div className={getClassName("input-container")}>
+      <label>
+        {label}
+      </label>
       <input
-        className={getClassName("input")}
+        className={getClassName("default")}
         autoComplete="off"
         type={field.type}
         title={label || name}
@@ -67,6 +60,6 @@ export const DefaultField = ({
         }
         step={field.type === "number" ? field.step : undefined}
       />
-    </Label>
+    </div>
   );
 };

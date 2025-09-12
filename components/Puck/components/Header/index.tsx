@@ -142,7 +142,7 @@ const HeaderInner = <
       <header
         className={getClassName({ leftSideBarVisible, rightSideBarVisible })}
       >
-        <div className={getClassName("inner")}>
+        {/* <div className={getClassName("inner")}>
           <div className={getClassName("toggle")}>
             <div className={getClassName("leftSideBarToggle")}>
               <IconButton
@@ -215,7 +215,7 @@ const HeaderInner = <
               setMenuOpen={setMenuOpen}
             />
           </div>
-        </div>
+        </div> */}
       </header>
     </CustomHeader>
   );

@@ -12,9 +12,10 @@
 }
 
 .Sidebar--right {
-  background: var(--puck-color-white);
-  border-inline-start: 1px solid var(--puck-color-grey-09);
+  background: var(--CMS-primary);
+  border-inline-start: 1px solid var(--CMS-secondary);
   grid-area: right;
+  scrollbar-width: none;
 }
 
 .Sidebar-resizeHandle {
