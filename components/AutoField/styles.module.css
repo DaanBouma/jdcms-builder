@@ -327,6 +327,7 @@ textarea.Input-input {
   min-width: 280px;
   overflow: hidden;
   padding: 16px;
+  border: 1px solid #d1d5db;
 }
 
 .Input-colorPickerSection {
