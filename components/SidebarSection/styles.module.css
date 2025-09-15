@@ -3,6 +3,7 @@
   position: relative;
   flex-direction: column;
   color: var(--puck-color-black);
+  background-color: var(--CMS-primary);
 }
 
 .SidebarSection:last-of-type {
@@ -10,11 +11,9 @@
 }
 
 .SidebarSection-title {
-  background: var(--puck-color-white);
-  padding: 16px;
-  border-bottom: 1px solid var(--puck-color-grey-09);
-  border-top: 1px solid var(--puck-color-grey-09);
-  overflow-x: auto;
+  margin: 0 35px 12px;
+  padding-bottom: 15px;
+  margin-top: 70px;
 }
 
 .SidebarSection--noBorderTop > .SidebarSection-title {
@@ -22,7 +21,7 @@
 }
 
 .SidebarSection-content {
-  padding: 16px;
+  margin: 0 35px 12px;
 }
 
 .SidebarSection--noPadding > .SidebarSection-content {
@@ -96,4 +95,36 @@
   pointer-events: all;
   box-sizing: border-box;
   opacity: 0.8;
+}
+
+.SidebarSection-heading {
+  margin: 25px;
+  margin-bottom: 55px;
+  margin-left: -20px;
+  color: var(--CMS-quaternary);
+  display: flex;
+  cursor: pointer;
+  gap: 4px;
+  font-size: 12px;
+  align-items: center;
+}
+
+.SidebarSection-heading p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--CMS-quaternary);
+}
+
+.SidebarSection-heading svg {
+  width: 16px;
+  color: var(--CMS-quaternary);
+}
+
+.SidebarSection-name {
+  margin: 0 0 12px 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--CMS-quaternary);
+  text-transform: capitalize;
 }

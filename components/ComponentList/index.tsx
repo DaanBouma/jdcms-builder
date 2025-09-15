@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import getClassNameFactory from "../../lib/get-class-name-factory";
-import { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { useAppStore } from "../../store";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Drawer } from "../Drawer";
@@ -52,7 +52,7 @@ const ComponentList = ({
   const setUi = useAppStore((s) => s.setUi);
   const componentList = useAppStore((s) => s.state.ui.componentList);
 
-  const { expanded = true } = componentList[id] || {};
+  const { expanded = false } = componentList[id] || {};
 
   return (
     <div className={getClassName({ isExpanded: expanded })}>

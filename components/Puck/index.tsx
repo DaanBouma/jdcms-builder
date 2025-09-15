@@ -417,6 +417,8 @@ function PuckLayout<
 
   const dispatch = useAppStore((s) => s.dispatch);
   const leftSideBarVisible = useAppStore((s) => s.state.ui.leftSideBarVisible);
+
+
   const rightSideBarVisible = useAppStore(
     (s) => s.state.ui.rightSideBarVisible
   );
@@ -531,9 +533,6 @@ function PuckLayout<
                   >
                     <SidebarSection title="Components" noBorderTop>
                       <Components />
-                    </SidebarSection>
-                    <SidebarSection title="Outline">
-                      <Outline />
                     </SidebarSection>
                   </Sidebar>
                   <Canvas />
